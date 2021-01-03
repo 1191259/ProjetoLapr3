@@ -1,0 +1,73 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+class Plataform {
+
+}
+
+
+class Administrator {
+
+}
+
+class Courier {
+  -String idPharmacy
+}
+
+class ElectricScooter {
+  -Integer uniqueNumber
+
+}
+
+class Pharmacy {
+  -String id
+  -String name
+}
+
+class PharmacyPark {
+  -Integer capacity
+
+}
+
+class Client {
+  -String name
+  -String email
+  -String homeAddress
+  -String gpsLocation
+  -String creditCardNumber
+  -String validityDate
+  -Integer CCV
+}
+
+class Product {
+  -String id
+  -String name
+}
+
+
+Plataform "1" -- "*" Administrator : has >
+
+Plataform "1" -- "*" Client : has >
+
+
+Plataform "1" -- "1" Pharmacy : has >
+
+Administrator "1" -- "1" Pharmacy : creates >
+
+Client "1" -- "1" Pharmacy : registers on >
+
+Pharmacy "1" -- "1" PharmacyPark : has >
+
+Pharmacy "1" -- "*" Courier : has >
+
+Pharmacy "1" -- "*" Product : has >
+
+Courier "1" -- "1" ElectricScooter : has >
+
+Pharmacy "1" -- "*" ElectricScooter : has >
+
+
+
+@enduml
