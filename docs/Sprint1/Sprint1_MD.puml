@@ -3,7 +3,7 @@ skinparam classAttributeIconSize 0
 hide methods
 left to right direction
 
-class Plataform {
+class Platform {
 
 }
 
@@ -47,12 +47,12 @@ class Product {
 }
 
 
-Plataform "1" -- "*" Administrator : has >
+Platform "1" -- "*" Administrator : has >
 
-Plataform "1" -- "*" Client : has >
+Platform "1" -- "*" Client : has >
 
 
-Plataform "1" -- "1" Pharmacy : has >
+Platform "1" -- "1" Pharmacy : has >
 
 Administrator "1" -- "1" Pharmacy : creates >
 
