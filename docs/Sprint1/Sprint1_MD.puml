@@ -85,5 +85,5 @@ Courier "1" -- "1" ElectricScooter : has >
 Pharmacy "1" -- "*" ElectricScooter : has >
 
 Delivery "1" -- "1" Courier : has >
-
+Delivery "1" -- "1" Courier : has >
 @enduml
