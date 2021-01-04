@@ -18,6 +18,7 @@ class Courier {
 
 class ElectricScooter {
   -Integer uniqueNumber
+  -Integer batteryCapacity
 
 }
 
@@ -31,7 +32,7 @@ class PharmacyPark {
 
 }
 
-class Client {
+class RegisteredUser {
   -String name
   -String email
   -String homeAddress
@@ -46,17 +47,32 @@ class Product {
   -String name
 }
 
+class Order {
+    -List products
+    -Integer uniqueNumber
+    -Integer weight
+    -String state
+}
+
+class Delivery {
+    -Integer distance
+}
+
 
 Platform "1" -- "*" Administrator : has >
 
-Platform "1" -- "*" Client : has >
+Platform "1" -- "*" RegisteredUser : has >
 
 
 Platform "1" -- "1" Pharmacy : has >
 
 Administrator "1" -- "1" Pharmacy : creates >
 
-Client "1" -- "1" Pharmacy : registers on >
+RegisteredUser "1" -- "1" Pharmacy : registers on >
+
+RegisteredUser "1" -- "1" Order : does >
+
+Order "1" -- "1" Delivery : generates >
 
 Pharmacy "1" -- "1" PharmacyPark : has >
 
