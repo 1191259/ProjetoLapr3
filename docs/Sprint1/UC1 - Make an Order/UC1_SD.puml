@@ -1,0 +1,17 @@
+@startuml
+autonumber
+
+actor "Client" as C
+participant "MakeOrderController" as CTRL
+participant "Platform" as PLAT
+participant "Product" as PRDT
+participant "Order" as OR
+participant "ProductList" as PRLST
+
+activate C
+C -> CTRL : Select a product and add it to the cart
+
+activate CTRL
+CTRL ->
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+actor "Client" as C
+autonumber
+loop while "No"
+    C -> "System" : Select a product and add it to the cart
+
+    activate C
+
+    activate "System"
+    "System" --> C : "Procede to checkout?"
+    deactivate "System"
+
+    C -> "System" :  "Yes/No"
+    activate "System"
+end loop
+
+"System" --> C : Ask for confirmation for the order
+deactivate "System"
+
+C -> "System" : Confirms order
+
+activate "System"
+"System" --> C : Success! Procede to payment
+deactivate "System"
+
+deactivate C
+
+@enduml
