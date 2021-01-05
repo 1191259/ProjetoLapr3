@@ -1,0 +1,15 @@
+@startuml
+actor "Client" as C
+autonumber
+
+    C -> "System" : Request Products List
+
+    activate C
+    activate "System"
+
+    "System" --> C : Supply Products List
+
+    deactivate "System"
+    deactivate C
+
+@enduml

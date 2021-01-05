@@ -1,0 +1,8 @@
+@startuml
+:Client: as C
+(View Products) as (Mk)
+
+C -> (Mk)
+
+
+@enduml
