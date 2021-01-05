@@ -2,16 +2,67 @@
 autonumber
 
 actor "Client" as C
+participant "MakeOrderUI" as UI
 participant "MakeOrderController" as CTRL
 participant "Platform" as PLAT
-participant "Product" as PRDT
-participant "Order" as OR
 participant "ProductList" as PRLST
+participant "Order" as OR
 
-activate C
-C -> CTRL : Select a product and add it to the cart
+loop while "No"
 
+    C -> UI : Select a product and add it to the cart
+    activate C
+
+    activate UI
+    UI -> CTRL : getProductById(String id)
+
+    activate CTRL
+    CTRL -> PLAT : getProductById(String id)
+    deactivate CTRL
+
+    activate PLAT
+    PLAT -> PRLST : getProductById(String id)
+    deactivate PLAT
+
+    activate PRLST
+    PRLST -> OR : addProductToCart(Product p)
+    deactivate PRLST
+
+    activate OR
+    OR -> OR : addToProductList(Product P)
+
+    UI --> C : "Procede to checkout?"
+    deactivate UI
+
+    deactivate OR
+
+    C -> UI : "Yes/No"
+    activate UI
+
+end loop
+
+UI --> C : Ask for confirmation for the order
+deactivate UI
+
+C -> UI : Confirms order
+activate UI
+
+UI -> CTRL : validateOrder(String orderID)
 activate CTRL
-CTRL ->
+
+CTRL -> PLAT : validateOrder(String orderID)
+activate PLAT
+deactivate CTRL
+
+PLAT -> OR : setAsDone(String orderID)
+activate OR
+deactivate PLAT
+
+UI --> C : Success! Procede to payment
+deactivate UI
+deactivate OR
+deactivate C
+
+
 
 @enduml

@@ -1,8 +1,0 @@
-@startuml
-:Client: as C
-(Make an Order) as (Mk)
-
-C -> (Mk)
-
-
-@enduml
