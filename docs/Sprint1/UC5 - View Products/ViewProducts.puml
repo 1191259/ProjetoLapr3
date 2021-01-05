@@ -7,8 +7,6 @@ User --> (Use)
 
 Admin ---> (Use)
 
-note right of Admin : This is an example.
-
 note right of (Use)
 A note can also
 be on several lines
